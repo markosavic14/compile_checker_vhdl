@@ -11,7 +11,7 @@
 import os
 from pathlib import Path
 from shutil import rmtree, copy
-from dependencies import transliterate
+import transliterate
 
 path_to_tool = 'C:/questasim64_2022.4/win64/'   # putanja do vcom i vlib alata (Quartus -> C:/intelFPGA_lite/xx.x/modelsim_ase/win32aloem/)
                                                 # Questa -> (C:/questasim64_xx.xx/win64/)

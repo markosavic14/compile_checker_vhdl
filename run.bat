@@ -1,2 +1,2 @@
-py src/auto_run.py
+py src/compile_checker_vhdl.py
 pause
