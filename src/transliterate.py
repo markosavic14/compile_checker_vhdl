@@ -2,6 +2,7 @@
 # Autor Marko Savic (markosavic14@gmail.com)
 # April 2023.
 
+import os
 
 cirilica_velika_slova = {u'А' : u'A',
             u'Б' : u'B',
@@ -76,7 +77,7 @@ latinica_dijakritici = {u'Č' : u'C',
                         u'Ž' : u'Z',
                         u'ž' : u'z'}
 
-def transliterate(string):
+def t_string(string):
     translit_string = ""
     for char in string:
         if char in cirilica_velika_slova.keys():
@@ -90,3 +91,8 @@ def transliterate(string):
 
     return translit_string
 
+def t_and_rename(path):
+    for index, name_of_folder in enumerate(path):
+        dir_normalised = t_string(name_of_folder)
+        os.rename(name_of_folder, dir_normalised)
+        path[index] = dir_normalised
