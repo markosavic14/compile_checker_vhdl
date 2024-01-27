@@ -93,7 +93,7 @@ def copy_tree(src, dst):
 
 
 if __name__ == "__main__":
-    os.chdir("../")        # po potrebi zakomentarisati ukoliko se skripta pokrece rucno a ne preko run.bat skripte
+    #os.chdir("../")        # po potrebi zakomentarisati ukoliko se skripta pokrece rucno a ne preko run.bat skripte
 
     # Provera da li postoji input folder i da li je popunjen
     if not os.path.exists('input/'):
