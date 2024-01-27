@@ -1,4 +1,4 @@
-# version: 0.2c
+# version: 0.3
 # autor Marko Savic (markosavic14@gmail.com)
 # Januar 2023.
 # za potrebe LPRS1 nastavne grupe
@@ -89,10 +89,11 @@ def copy_tree(src, dst):
                 make_subfolders('output/' + dst + temp_src[5:])
                 copy(s_file, 'output/' + dst + s_file[5:])
                 break
+    return 'output/' + dst + s_file[5:len(s_file) - i]
 
 
 if __name__ == "__main__":
-    #os.chdir("../")        # po potrebi zakomentarisati ukoliko se skripta pokrece rucno a ne preko run.bat skripte
+    os.chdir("../")        # po potrebi zakomentarisati ukoliko se skripta pokrece rucno a ne preko run.bat skripte
 
     # Provera da li postoji input folder i da li je popunjen
     if not os.path.exists('input/'):
@@ -120,13 +121,16 @@ if __name__ == "__main__":
 
         ret = subprocess.run(instr, capture_output=True);
         if ret.returncode:
-            copy_tree(file, 'comp_fail')
+            ret_path = copy_tree(file, 'comp_fail')
             print(file[0] + '\n' + file[1])
             print("COMP FAIL")
         else:
-            copy_tree(file, 'comp_pass')
+            ret_path = copy_tree(file, 'comp_pass')
             print(file[0] + '\n' + file[1])
             print("COMP PASS")
+
+        with open(f'{ret_path}log.txt', 'wb') as f:
+            f.write(ret.stdout)
 
         print('\n############################\n')
 
